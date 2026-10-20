@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+*.log
+# Never commit CVs, private documents or credentials
+*.pdf
+.env
