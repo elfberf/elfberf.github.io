@@ -5,7 +5,11 @@ Personal portfolio of **Elif Berfin Gülbaş** — Software Engineer, Backend & 
 Live: <https://elfberf.github.io/>
 
 Plain HTML, CSS and vanilla JavaScript. No framework, no dependencies, no build step:
-the repository root is the published site. English and Turkish, light and dark themes,
+the repository root is the published site.
+
+Features: English/Turkish, light/dark themes, a scripted message assistant that
+answers from the CV and composes an email in the visitor's own mail client, a
+command menu (⌘K / Ctrl+K), Ankara local time, vCard download, share button and a
 print-ready résumé view.
 
 ## Run locally

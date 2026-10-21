@@ -78,6 +78,13 @@
     <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></g></symbol>
     <symbol id="i-database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></g></symbol>
     <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></g></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 12 20 4l-6 16-3-7-7-1Z"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5M18 8v6M15 11h6"/></g></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.5 5.2 3.5 8.5s-1.2 6.1-3.5 8.5c-2.3-2.4-3.5-5.2-3.5-8.5s1.2-6.1 3.5-8.5Z"/></g></symbol>
   </svg>
 
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -100,6 +107,10 @@
       </nav>
 
       <div class="controls">
+        <button type="button" class="palette-trigger" data-palette-open data-i18n-attr="aria-label:palette.open" aria-label="Open command menu">
+          <svg class="icon icon--small" aria-hidden="true"><use href="#i-search"/></svg>
+          <kbd data-shortcut>⌘K</kbd>
+        </button>
         <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Language">
           <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
           <button type="button" data-lang="tr" aria-pressed="false" lang="tr">TR</button>
@@ -221,6 +232,25 @@
             </button>
           </div>
 
+          <div class="contact__meta">
+            <p class="contact__time">
+              <svg class="icon icon--small" aria-hidden="true"><use href="#i-clock"/></svg>
+              <span data-i18n="contact.localTime">Local time in Ankara</span>
+              <strong data-local-time>—</strong>
+              <span class="contact__tz">GMT+3</span>
+            </p>
+            <div class="contact__tools">
+              <button type="button" class="button button--ghost button--small" data-vcard>
+                <svg class="icon icon--small" aria-hidden="true"><use href="#i-user-plus"/></svg>
+                <span data-i18n="contact.vcard">Add to contacts</span>
+              </button>
+              <button type="button" class="button button--ghost button--small" data-share>
+                <svg class="icon icon--small" aria-hidden="true"><use href="#i-share"/></svg>
+                <span data-i18n="contact.share">Share</span>
+              </button>
+            </div>
+          </div>
+
           <ul class="contact__links">
             <li>
               <a class="link-card" href="https://github.com/elfberf" rel="me">
@@ -267,6 +297,49 @@
   <a class="to-top icon-button icon-button--solid" href="#top" data-to-top data-i18n-attr="aria-label:footer.top" aria-label="Back to top">
     <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
   </a>
+  <!-- Message assistant: scripted, runs entirely in the browser; mail is sent from the visitor's own account. -->
+  <button type="button" class="assistant-launcher" data-assistant-open aria-expanded="false" aria-controls="assistant" data-i18n-attr="aria-label:assistant.openLabel" aria-label="Open the message assistant">
+    <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+    <span data-i18n="assistant.open">Message</span>
+  </button>
+  <section class="assistant" id="assistant" role="dialog" aria-modal="false" aria-labelledby="assistant-title" hidden>
+    <header class="assistant__head">
+      <span class="brand__mark assistant__avatar" aria-hidden="true">EB</span>
+      <div class="assistant__heading">
+        <h2 class="assistant__title" id="assistant-title" data-i18n="assistant.title">Message assistant</h2>
+        <p class="assistant__subtitle" data-i18n="assistant.subtitle">Automated · answers come from the CV</p>
+      </div>
+      <button type="button" class="icon-button assistant__close" data-assistant-close data-i18n-attr="aria-label:assistant.close" aria-label="Close the message assistant">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </header>
+    <div class="assistant__log" role="log" aria-live="polite" data-assistant-log></div>
+    <div class="assistant__chips" data-assistant-chips></div>
+    <form class="assistant__form" data-assistant-form>
+      <label class="visually-hidden" for="assistant-input" data-i18n="assistant.inputLabel">Your reply</label>
+      <textarea id="assistant-input" rows="1" data-assistant-input autocomplete="off" placeholder="Ask about the CV or type “message”…"></textarea>
+      <button type="submit" class="icon-button icon-button--solid" data-i18n-attr="aria-label:assistant.send" aria-label="Send">
+        <svg class="icon icon--small" aria-hidden="true"><use href="#i-send"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- Command menu (⌘K / Ctrl+K or "/"). -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-labelledby="palette-title" hidden>
+    <div class="palette__panel">
+      <h2 class="visually-hidden" id="palette-title" data-i18n="palette.label">Command menu</h2>
+      <div class="palette__search">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input type="text" data-palette-input role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" data-i18n-attr="aria-label:palette.label" aria-label="Command menu" placeholder="Search or jump to…">
+        <kbd>Esc</kbd>
+      </div>
+      <ul class="palette__list" id="palette-list" role="listbox" data-palette-list data-i18n-attr="aria-label:palette.label" aria-label="Command menu"></ul>
+      <p class="palette__empty" data-palette-empty data-i18n="palette.empty" hidden>No matching commands</p>
+      <p class="palette__footer" data-i18n="palette.footer">↑ ↓ to move · Enter to run · Esc to close</p>
+    </div>
+  </div>
+
+  <div class="toast" data-toast aria-hidden="true"></div>
   <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
 </body>
 </html>
