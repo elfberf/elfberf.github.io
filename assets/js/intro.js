@@ -2,7 +2,8 @@
  * First-visit intro: soft points of light drift down behind the hero while the
  * backdrop glow settles in and the surname gets a single shimmer.
  *
- * - Plays on every page load, never with prefers-reduced-motion.
+ * - Plays on every page load. With prefers-reduced-motion it does not start on
+ *   its own; offerIntro() shows a button so the visitor can choose to play it.
  * - Purely decorative: the canvas sits behind the hero content, ignores the
  *   pointer, is hidden from assistive tech and removes itself when done.
  */
@@ -19,10 +20,29 @@ function toRgb(color) {
   return [r, g, b];
 }
 
-export function playIntro() {
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/** With reduced motion, adds a small "play the light effect" button to the hero instead of autoplaying. */
+export function offerIntro(label) {
+  const copy = document.querySelector(".hero__copy");
+  if (!copy || !reducedMotion() || copy.querySelector("[data-intro-play]")) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "intro-offer";
+  button.dataset.introPlay = "";
+  const text = document.createElement("span");
+  text.dataset.i18n = "intro.play";
+  text.textContent = label("intro.play");
+  button.append("✨ ", text);
+  button.addEventListener("click", () => playIntro({ force: true }));
+  copy.append(button);
+}
+
+export function playIntro({ force = false } = {}) {
   const hero = document.querySelector(".hero");
   const root = document.documentElement;
-  if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!hero || (reducedMotion() && !force)) return;
+  hero.querySelector(".hero__lights")?.remove();
 
   root.classList.add("intro");
   setTimeout(() => root.classList.remove("intro"), DURATION + 200);

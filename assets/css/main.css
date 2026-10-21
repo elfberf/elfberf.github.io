@@ -26,6 +26,14 @@
   --shadow: 0 1px 2px rgb(20 22 26 / 0.04), 0 8px 24px -12px rgb(20 22 26 / 0.12);
   --shadow-lg: 0 2px 4px rgb(20 22 26 / 0.04), 0 24px 48px -24px rgb(20 22 26 / 0.22);
   --spot: rgb(14 107 99 / 0.07);
+  /* Precomputed mixes (no color-mix(), which older iOS Safari lacks). */
+  --bg-glass: rgb(251 250 247 / 0.82);
+  --surface-glass: rgb(255 255 255 / 0.72);
+  --ink-hover: #132224;
+  --accent-hover: #0f5e58;
+  --accent-mid: #1b737f;
+  --accent-glow: rgb(14 107 99 / 0.7);
+  --shimmer: #c1d9e5;
 
   --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, "Iowan Old Style", Georgia, serif;
@@ -80,6 +88,13 @@
     --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
     --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -24px rgb(0 0 0 / 0.7);
     --spot: rgb(95 211 194 / 0.07);
+    --bg-glass: rgb(11 13 14 / 0.82);
+    --surface-glass: rgb(18 21 23 / 0.72);
+    --ink-hover: #d8eae9;
+    --accent-hover: #74d7c9;
+    --accent-mid: #6ac8ce;
+    --accent-glow: rgb(95 211 194 / 0.55);
+    --shimmer: #d7e9f6;
   }
 }
 
@@ -103,6 +118,13 @@
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
   --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -24px rgb(0 0 0 / 0.7);
   --spot: rgb(95 211 194 / 0.07);
+  --bg-glass: rgb(11 13 14 / 0.82);
+  --surface-glass: rgb(18 21 23 / 0.72);
+  --ink-hover: #d8eae9;
+  --accent-hover: #74d7c9;
+  --accent-mid: #6ac8ce;
+  --accent-glow: rgb(95 211 194 / 0.55);
+  --shimmer: #d7e9f6;
   color-scheme: dark;
 }
 
@@ -335,7 +357,7 @@ button {
 }
 
 .is-scrolled .site-header {
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  background: var(--bg-glass);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   backdrop-filter: saturate(160%) blur(14px);
   border-bottom-color: var(--line);
@@ -615,7 +637,7 @@ button {
   padding: 0.35rem 0.85rem 0.35rem 0.7rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  background: var(--surface-glass);
   color: var(--ink-2);
   font-size: var(--step--1);
   -webkit-backdrop-filter: blur(6px);
@@ -687,7 +709,7 @@ button {
   padding: var(--space-5) var(--space-5) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  background: var(--surface-glass);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
@@ -858,13 +880,13 @@ button {
 
 .button--primary:hover {
   color: var(--bg);
-  background: color-mix(in srgb, var(--ink) 86%, var(--accent));
+  background: var(--ink-hover);
   box-shadow: var(--shadow-lg);
 }
 
 .button--ghost {
   border-color: var(--line-strong);
-  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  background: var(--surface-glass);
   color: var(--ink);
 }
 
@@ -1557,7 +1579,7 @@ button {
 
 .icon-button--solid:hover {
   color: var(--bg);
-  background: color-mix(in srgb, var(--ink) 86%, var(--accent));
+  background: var(--ink-hover);
 }
 
 /* ---- Command-menu trigger, contact tools ------------------------------------- */
@@ -1648,17 +1670,17 @@ kbd {
   padding: 0 1.25rem 0 1.05rem;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--accent-2)));
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
   color: var(--accent-ink);
   font-weight: 500;
-  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent) 70%, transparent), var(--shadow);
+  box-shadow: 0 10px 30px -10px var(--accent-glow), var(--shadow);
   cursor: pointer;
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .assistant-launcher:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px -12px color-mix(in srgb, var(--accent) 80%, transparent), var(--shadow-lg);
+  box-shadow: 0 16px 36px -12px var(--accent-glow), var(--shadow-lg);
 }
 
 .assistant-launcher[aria-expanded="true"] {
@@ -1684,6 +1706,7 @@ kbd {
   display: flex;
   flex-direction: column;
   width: min(24.5rem, calc(100vw - 2rem));
+  height: min(38rem, calc(100vh - 2rem));
   height: min(38rem, calc(100dvh - 2rem));
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -1705,6 +1728,7 @@ kbd {
   .assistant {
     inset: auto 0 0;
     width: 100%;
+    height: min(88vh, 40rem);
     height: min(88dvh, 40rem);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     border-bottom: 0;
@@ -1893,7 +1917,7 @@ kbd {
 
 .chip--primary:hover {
   color: var(--accent-ink);
-  background: color-mix(in srgb, var(--accent) 85%, var(--ink));
+  background: var(--accent-hover);
 }
 
 .assistant__form {
@@ -2104,6 +2128,26 @@ kbd {
   opacity: 0;
 }
 
+/* Shown instead of autoplay when the visitor prefers reduced motion. */
+.intro-offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.25rem;
+  padding: 0 0.9rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.intro-offer:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .intro .hero__backdrop {
   animation: backdrop-in 1.9s var(--ease) both;
 }
@@ -2120,7 +2164,7 @@ kbd {
     100deg,
     var(--accent) 0%,
     var(--accent-2) 38%,
-    color-mix(in srgb, var(--accent-2) 30%, #fff) 50%,
+    var(--shimmer) 50%,
     var(--accent-2) 62%,
     var(--accent) 100%
   );
@@ -2235,6 +2279,7 @@ kbd {
   .skip-link,
   .hero__backdrop,
   .hero__lights,
+  .intro-offer,
   .hero__actions,
   .glance,
   .metric__more,

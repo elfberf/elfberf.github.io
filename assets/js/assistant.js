@@ -253,7 +253,9 @@ export function createAssistant({ label, getLang, content, onToggle = () => {} }
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
       event.preventDefault();
-      form.requestSubmit();
+      // requestSubmit() is missing on older iOS Safari; clicking the submit button is equivalent.
+      if (form.requestSubmit) form.requestSubmit();
+      else form.querySelector('[type="submit"]')?.click();
     }
   });
 
