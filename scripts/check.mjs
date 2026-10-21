@@ -122,6 +122,18 @@ for (const [, spec] of index.matchAll(/data-i18n-attr="([^"]+)"/g)) {
 const sprite = new Set([...index.matchAll(/<symbol id="i-([^"]+)"/g)].map((m) => m[1]));
 for (const [, id] of index.matchAll(/href="#i-([^"]+)"/g)) if (!sprite.has(id)) fail(`index.html: icon #i-${id} missing`);
 for (const p of content.principles) if (!sprite.has(p.icon)) fail(`principles: icon "${p.icon}" missing from sprite`);
+for (const file of ["assets/js/main.js", "assets/js/assistant.js", "assets/js/render.js"]) {
+  for (const [, id] of read(file).matchAll(/icon(?:\(|: )"([a-z-]+)"/g)) {
+    if (!sprite.has(id)) fail(`${file}: icon "${id}" missing from sprite`);
+  }
+}
+// Every assistant/command label used in code must exist in i18n.js.
+for (const [, key] of read("assets/js/main.js").matchAll(/label\("([\w.]+)"\)/g)) {
+  if (!keys.has(key)) fail(`main.js: label "${key}" missing in i18n.js`);
+}
+for (const [, key] of read("assets/js/assistant.js").matchAll(/L\(["`]([\w.]+)/g)) {
+  if (!key.endsWith(".") && !keys.has(`assistant.${key}`)) fail(`assistant.js: "assistant.${key}" missing in i18n.js`);
+}
 
 const staticIds = new Set([...index.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 const allIds = new Set([...staticIds, ...ids]);
@@ -154,7 +166,10 @@ for (const [, url] of index.matchAll(/href="(https?:[^"]+)"/g)) {
 
 // ---- Privacy -----------------------------------------------------------------
 // SVG path data is full of digit runs; it is not content, so leave it out of the scan.
-const published = [index.replace(/<svg[\s\S]*?<\/svg>/g, ""), read("assets/js/data.js"), read("assets/js/i18n.js")].join("\n");
+const published = [
+  index.replace(/<svg[\s\S]*?<\/svg>/g, ""),
+  ...["data.js", "i18n.js", "actions.js", "assistant.js"].map((f) => read(`assets/js/${f}`)),
+].join("\n");
 if (/\+?\d[\d\s()-]{9,}\d/.test(published.replace(/\d{4}\s*[–-]\s*\d{4}/g, ""))) {
   fail("Possible phone number in published content — the CV phone number must not be published");
 }

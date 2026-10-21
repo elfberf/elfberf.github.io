@@ -29,9 +29,14 @@ GitHub Pages. Read this file completely before changing anything.
 5. **Both languages say the same thing.** Turkish text follows the Turkish CV
    wording; English is a faithful translation. Never add a claim in one
    language only.
-6. **Personal data.** Publish only the email, GitHub and LinkedIn. Never publish
+6. **Message assistant and command menu.** The assistant is scripted and must
+   say it is automated. It answers only with text built from `data.js` and
+   `i18n.js` — never free-form or invented answers — and mail is composed in the
+   visitor's own client (`mailto:`, Gmail, Outlook). Do not add an AI model,
+   API key, tracking, or a form service without the owner's explicit decision.
+7. **Personal data.** Publish only the email, GitHub and LinkedIn. Never publish
    the phone number, home address, the CV PDF or references.
-7. Changes to positioning, personal details or new claims require the owner's
+8. Changes to positioning, personal details or new claims require the owner's
    explicit approval.
 
 ## 3. Architecture
@@ -50,6 +55,9 @@ assets/js/data.js     Content, bilingual ({ en, tr }) — single source of truth
 assets/js/i18n.js     Interface strings per language + t() resolver
 assets/js/render.js   Pure render functions, one per data collection (take data + language)
 assets/js/ui.js       Theme, language preference, menu, nav state, copy, print, progress, reveal
+assets/js/actions.js  Shared actions: toast, clipboard, vCard, share, mail links, Ankara clock
+assets/js/assistant.js Scripted message assistant (CV answers + email composer)
+assets/js/palette.js  Command menu (⌘K / Ctrl+K / "/")
 assets/js/main.js     Entry point: translate static text, render slots, wire up ui.js
 assets/img/           favicon.svg, apple-touch-icon.png, og.png (social preview)
 scripts/check.mjs     Dependency-free checks (content shape, translations, links, privacy)

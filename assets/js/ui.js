@@ -4,6 +4,7 @@
  * Every enhancement is optional — the page is fully readable without it.
  */
 import { LANGUAGES, DEFAULT_LANGUAGE } from "./i18n.js";
+import { copyText, notify } from "./actions.js";
 
 const root = document.documentElement;
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -151,52 +152,25 @@ export function initScrollUi() {
 
 /* ---- Copy & print ----------------------------------------------------------- */
 export function initCopy(getLabel) {
-  const announcer = document.querySelector("[data-announcer]");
   for (const button of document.querySelectorAll("[data-copy]")) {
     let timer;
     button.addEventListener("click", async () => {
       const value = button.dataset.copy;
-      let ok = false;
-      try {
-        await navigator.clipboard.writeText(value);
-        ok = true;
-      } catch {
-        ok = fallbackCopy(value);
-      }
-      if (!ok) {
+      if (!(await copyText(value))) {
         location.href = `mailto:${value}`;
         return;
       }
       const text = button.querySelector("[data-copy-label]");
       button.classList.add("is-copied");
       if (text) text.textContent = getLabel("contact.copied");
-      if (announcer) announcer.textContent = getLabel("contact.copiedAnnounce");
+      notify(getLabel("contact.copiedAnnounce"));
       clearTimeout(timer);
       timer = setTimeout(() => {
         button.classList.remove("is-copied");
         if (text) text.textContent = getLabel("contact.copy");
-        if (announcer) announcer.textContent = "";
       }, 2000);
     });
   }
-}
-
-function fallbackCopy(value) {
-  const area = document.createElement("textarea");
-  area.value = value;
-  area.setAttribute("readonly", "");
-  area.style.position = "fixed";
-  area.style.opacity = "0";
-  document.body.append(area);
-  area.select();
-  let ok = false;
-  try {
-    ok = document.execCommand("copy");
-  } catch {
-    ok = false;
-  }
-  area.remove();
-  return ok;
 }
 
 export function initPrint() {
