@@ -27,4 +27,6 @@ a faithful translation. Numbers and qualifiers are kept exactly in both language
 | Languages | Turkish native, English C1, German B1 | Diller |
 | Contact | Email, GitHub `elfberf`, LinkedIn `berfingulbas` | Header links |
 
+Portrait (`assets/img/portrait.*`): provided by the owner for this site; also used in `og.png`.
+
 Deliberately **not** published: phone number, references.
