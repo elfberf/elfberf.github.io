@@ -2,25 +2,13 @@
  * First-visit intro: soft points of light drift down behind the hero while the
  * backdrop glow settles in and the surname gets a single shimmer.
  *
- * - Plays once per browser session, never with prefers-reduced-motion.
+ * - Plays on every page load, never with prefers-reduced-motion.
  * - Purely decorative: the canvas sits behind the hero content, ignores the
  *   pointer, is hidden from assistive tech and removes itself when done.
  */
 
 const DURATION = 4200; // ms until the last particle has faded
 const SPAWN_FOR = 2200; // ms during which new particles appear
-const SESSION_KEY = "intro-played";
-
-function alreadyPlayed() {
-  try {
-    if (sessionStorage.getItem(SESSION_KEY)) return true;
-    sessionStorage.setItem(SESSION_KEY, "1");
-  } catch {
-    /* without storage, simply play */
-  }
-  return false;
-}
-
 /** "#0e6b63" or "rgb(…)" → [r, g, b] */
 function toRgb(color) {
   const probe = document.createElement("span");
@@ -34,7 +22,7 @@ function toRgb(color) {
 export function playIntro() {
   const hero = document.querySelector(".hero");
   const root = document.documentElement;
-  if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches || alreadyPlayed()) return;
+  if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   root.classList.add("intro");
   setTimeout(() => root.classList.remove("intro"), DURATION + 200);
