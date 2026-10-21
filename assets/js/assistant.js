@@ -7,9 +7,9 @@
  *     visitor's own mail app / Gmail / Outlook. Nothing is sent or stored by
  *     this site, and there is no AI model or third-party service behind it.
  */
-import { t } from "./i18n.js?v=20261021-1510";
-import { OWNER, copyText, localTime, mailLinks, notify } from "./actions.js?v=20261021-1510";
-import { el, icon } from "./render.js?v=20261021-1510";
+import { t } from "./i18n.js?v=20261021-1513";
+import { OWNER, copyText, localTime, mailLinks, notify } from "./actions.js?v=20261021-1513";
+import { el, icon } from "./render.js?v=20261021-1513";
 
 const LIMITS = { name: 80, message: 1500, minMessage: 10 };
 const FAQ = ["stack", "experience", "education", "languages", "location"];

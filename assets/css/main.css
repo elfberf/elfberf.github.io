@@ -614,13 +614,18 @@ button {
 .hero__grid {
   display: grid;
   gap: var(--space-7);
-  align-items: center;
 }
 
+/* Desktop: copy starts at the top of the (taller) profile card instead of floating mid-way. */
 @media (min-width: 64rem) {
   .hero__grid {
     grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    align-items: start;
     gap: var(--space-8);
+  }
+
+  .hero__copy {
+    padding-top: var(--space-7);
   }
 }
 

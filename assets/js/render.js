@@ -3,7 +3,7 @@
  * and returns a DOM node. Text is always set through text nodes (never
  * innerHTML), so content cannot inject markup.
  */
-import { strings, t } from "./i18n.js?v=20261021-1510";
+import { strings, t } from "./i18n.js?v=20261021-1513";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
