@@ -379,8 +379,8 @@ button {
   background: var(--ink);
   color: var(--bg);
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
   transition: transform 0.3s var(--ease);
 }
 
@@ -2089,6 +2089,54 @@ kbd {
   transform: translate(-50%, 0);
 }
 
+/* ---- First-visit intro (see intro.js; skipped with reduced motion) ------------- */
+.hero__lights {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease);
+}
+
+.hero__lights.is-done {
+  opacity: 0;
+}
+
+.intro .hero__backdrop {
+  animation: backdrop-in 1.9s var(--ease) both;
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8%) scale(1.04);
+  }
+}
+
+.intro .hero__title em {
+  background-image: linear-gradient(
+    100deg,
+    var(--accent) 0%,
+    var(--accent-2) 38%,
+    color-mix(in srgb, var(--accent-2) 30%, #fff) 50%,
+    var(--accent-2) 62%,
+    var(--accent) 100%
+  );
+  background-size: 250% 100%;
+  animation: shimmer 1.8s 0.6s var(--ease) both;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
 /* ---- Motion -------------------------------------------------------------------- */
 /* .can-reveal is set by JS only when IntersectionObserver exists and motion is allowed.
    The fallback animation guarantees content appears even if a script fails. */
@@ -2186,6 +2234,7 @@ kbd {
   .to-top,
   .skip-link,
   .hero__backdrop,
+  .hero__lights,
   .hero__actions,
   .glance,
   .metric__more,

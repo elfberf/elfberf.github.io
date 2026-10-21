@@ -10,6 +10,7 @@ import * as ui from "./ui.js";
 import { OWNER, copyText, downloadVCard, notify, sharePage, startClock } from "./actions.js";
 import { createAssistant } from "./assistant.js";
 import { createPalette } from "./palette.js";
+import { playIntro } from "./intro.js";
 
 const root = document.documentElement;
 let lang = ui.initialLanguage();
@@ -111,6 +112,7 @@ function commands() {
 syncTheme = ui.initTheme(label);
 tickClock = startClock(() => lang);
 apply();
+playIntro();
 ui.bindLanguageSwitch(setLanguage);
 ui.initMenu();
 ui.initNavState();
