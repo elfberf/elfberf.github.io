@@ -5,7 +5,8 @@ Personal portfolio of **Elif Berfin Gülbaş** — Software Engineer, Backend & 
 Live: <https://elfberf.github.io/>
 
 Plain HTML, CSS and vanilla JavaScript. No framework, no dependencies, no build step:
-the repository root is the published site.
+the repository root is the published site. English and Turkish, light and dark themes,
+print-ready résumé view.
 
 ## Run locally
 
@@ -28,11 +29,21 @@ push and pull request.
 
 ## Edit content
 
-Repeating sections (case studies, experience, skills, education, languages) live
-in [`assets/js/data.js`](assets/js/data.js). The hero, contact details and SEO
-metadata are in [`index.html`](index.html). Every claim must trace to the CV —
+Content lives in [`assets/js/data.js`](assets/js/data.js), written in both languages
+as `{ en, tr }`. Interface labels are in [`assets/js/i18n.js`](assets/js/i18n.js). The
+hero heading, contact details and SEO metadata are in [`index.html`](index.html).
+Link to a specific language with `?lang=tr` or `?lang=en`. Every claim must trace to the CV —
 see [`docs/CONTENT_SOURCES.md`](docs/CONTENT_SOURCES.md) and
 [`AGENTS.md`](AGENTS.md).
+
+## Social image
+
+`assets/img/og.png` (1200×630) is rendered from `scripts/og.html`, and
+`assets/img/apple-touch-icon.png` from `scripts/icon.html`, with headless Chrome:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --virtual-time-budget=6000 --window-size=1200,630 --screenshot="$PWD/assets/img/og.png" "file://$PWD/scripts/og.html"
+```
 
 ## Deploy
 

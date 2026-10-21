@@ -1,0 +1,13 @@
+{
+  "name": "Elif Berfin Gülbaş — Software Engineer",
+  "short_name": "E. B. Gülbaş",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#fbfaf7",
+  "theme_color": "#fbfaf7",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

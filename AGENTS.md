@@ -6,7 +6,7 @@ GitHub Pages. Read this file completely before changing anything.
 ## 1. What this site is
 
 - Positioning: **Software Engineer — Backend & Enterprise Systems**.
-- Audience: recruiters and engineering leads. English only.
+- Audience: recruiters and engineering leads. **Bilingual: English (default) and Turkish.**
 - Tone: minimal, precise, factual. No marketing superlatives, no emoji, no
   decorative animation.
 
@@ -26,56 +26,85 @@ GitHub Pages. Read this file completely before changing anything.
    CV only. Never publish client code, internal system names, architecture
    diagrams, screenshots, data, ticket numbers or colleague names. Professional
    case studies keep `repo: null` and a confidentiality `note`.
-5. **Personal data.** Publish only the email, GitHub and LinkedIn. Never publish
+5. **Both languages say the same thing.** Turkish text follows the Turkish CV
+   wording; English is a faithful translation. Never add a claim in one
+   language only.
+6. **Personal data.** Publish only the email, GitHub and LinkedIn. Never publish
    the phone number, home address, the CV PDF or references.
-6. Changes to positioning, personal details or new claims require the owner's
+7. Changes to positioning, personal details or new claims require the owner's
    explicit approval.
 
 ## 3. Architecture
 
 Plain HTML5, CSS3 and vanilla ES modules. **No frameworks, no Tailwind, no
 package manager, no build step.** The repository root is the published site.
+The only external resource is Google Fonts (Geist, Geist Mono, Instrument Serif);
+system fonts are the fallback.
 
 ```
-index.html            Static shell: <head>/SEO, hero, contact, section slots
+index.html            Static shell: <head>/SEO, icon sprite, header, hero, section slots, contact
 404.html              GitHub Pages not-found page
-assets/css/main.css   All styles: tokens → base → layout → components → utilities
-assets/js/data.js     Content (single source of truth for repeating sections)
-assets/js/render.js   Pure render functions, one per data collection
-assets/js/main.js     Entry point: fills [data-render] slots, nav state
-scripts/check.mjs     Dependency-free checks (content shape, links, privacy)
-docs/                 Content source map and supporting docs
+manifest.webmanifest  Name, colors and icons for "add to home screen"
+assets/css/main.css   All styles: tokens → base → layout → header → hero → components → motion → print
+assets/js/data.js     Content, bilingual ({ en, tr }) — single source of truth for rendered sections
+assets/js/i18n.js     Interface strings per language + t() resolver
+assets/js/render.js   Pure render functions, one per data collection (take data + language)
+assets/js/ui.js       Theme, language preference, menu, nav state, copy, print, progress, reveal
+assets/js/main.js     Entry point: translate static text, render slots, wire up ui.js
+assets/img/           favicon.svg, apple-touch-icon.png, og.png (social preview)
+scripts/check.mjs     Dependency-free checks (content shape, translations, links, privacy)
+scripts/og.html       Source for og.png; scripts/icon.html → apple-touch-icon.png
+docs/                 Content source map
 ```
 
 Rules:
 
-- The hero, contact links and `<head>` metadata are static HTML so they are
-  crawlable without JavaScript. Repeating collections live in `data.js`.
-- Render with `el()` / `textContent` only. **Never use `innerHTML`** with content.
+- The hero heading and `<head>` metadata are static HTML so they are crawlable
+  without JavaScript. Static text carries `data-i18n="key"` (or
+  `data-i18n-attr="attr:key"`); its English text in the HTML must match
+  `strings.en[key]`.
+- Localized content is `{ en, tr }`; plain strings are language-neutral
+  (technology and company names). Every key/field needs both languages.
+- Language order: `?lang=` → saved choice → browser language → English.
+  Theme: saved choice → system preference. Storage access is always wrapped in
+  `try/catch`; the site works without it.
+- Render with `el()` / text nodes only. **Never use `innerHTML`** with content.
+- Enhancements are optional: content must be readable with JavaScript failing
+  after load. Reveal-on-scroll has a CSS fallback and is off for
+  `prefers-reduced-motion`. No decorative animation beyond fades, count-up and
+  hover states.
 - **Paths in `index.html` are relative** (`assets/...`, never `/assets/...`) so the
   site works both at `https://<user>.github.io/` and at a project subpath.
   `404.html` is the one exception: it uses `<base href="/">` because GitHub
   Pages serves it at any depth.
-- Absolute URLs (canonical, Open Graph, JSON-LD, `robots.txt`, `sitemap.xml`,
-  `404.html` base) assume `https://elfberf.github.io/`. If the site moves to a
-  subpath or custom domain, update all of them together.
+- Absolute URLs (canonical, hreflang, Open Graph, JSON-LD, `robots.txt`,
+  `sitemap.xml`, `404.html` base) assume `https://elfberf.github.io/`. If the site
+  moves to a subpath or custom domain, update all of them together.
 - Keep `.nojekyll` so GitHub Pages serves files as-is.
-- Colors and spacing come from CSS custom properties in `:root`; dark mode
-  overrides the tokens only. Do not hard-code colors in components.
+- Colors and spacing come from CSS custom properties in `:root`. Dark tokens are
+  defined twice (system preference and `[data-theme="dark"]`) — keep them in sync.
+  Do not hard-code colors in components.
+- Icons live in the SVG sprite at the top of `index.html` (`#i-<name>`).
 
 ## 4. Extending the site
 
 **Add a case study** — append an object to `caseStudies` in `assets/js/data.js`
 following the documented shape (`id`, `title`, `context`, `period`, `kind`,
-`problem`, `approach`, `outcome`, `stack`, `repo`, `note`). No HTML changes needed.
+`problem`, `approach`, `outcome`, `flow`, `stack`, `repo`, `note`), in both
+languages. No HTML changes needed. Add a `metrics` entry only for a number the
+CV states.
 
 **Add a section** —
 1. add the data export to `data.js`;
 2. add a renderer to the `renderers` map in `render.js`;
-3. add `<section class="section container" id="…">` with a
-   `<div data-render="<exportName>">` slot to `index.html`, and a nav link;
-4. add styles under a new component heading in `main.css`;
-5. extend `scripts/check.mjs` if the data has required fields.
+3. add `<section class="section" id="…">` with a `<div data-render="<exportName>">`
+   slot to `index.html`, plus a nav link with a `data-i18n` key;
+4. add the interface strings to **every** language in `i18n.js`;
+5. add styles under a new component heading in `main.css`;
+6. extend `scripts/check.mjs` if the data has required fields.
+
+**Add a language** — add its code to `LANGUAGES`, a full `strings.<code>` block,
+the field in every `{ en, tr }` value, and a button in `.lang-switch`.
 
 ## 5. Quality bar
 
@@ -87,8 +116,10 @@ node scripts/check.mjs
 
 Then manually verify in a browser (`python3 -m http.server` from the repo root):
 
-- 375 px, 768 px and desktop widths; no horizontal scroll.
-- Light and dark color schemes; text contrast ≥ WCAG AA.
+- 375 px, 768 px and desktop widths; no horizontal scroll; mobile menu opens,
+  closes on link tap and Escape.
+- English and Turkish; light and dark (system and toggle); text contrast ≥ WCAG AA.
+- Print preview ("Save as PDF") gives a clean one-column résumé.
 - Keyboard: skip link, visible focus, logical tab order; one `<h1>`, ordered headings.
 - No console errors. All links resolve.
 - Respects `prefers-reduced-motion`.

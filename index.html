@@ -2,23 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Elif Berfin Gülbaş — Software Engineer, Backend &amp; Enterprise Systems</title>
   <meta name="description" content="Elif Berfin Gülbaş is a backend-focused software engineer building enterprise banking systems with Java, Spring Boot, REST APIs and relational databases.">
   <meta name="author" content="Elif Berfin Gülbaş">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141513" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0d0e" media="(prefers-color-scheme: dark)">
   <!-- Absolute URLs below assume the user site https://elfberf.github.io/.
        If the site is served from a project subpath, update them (see AGENTS.md). -->
   <link rel="canonical" href="https://elfberf.github.io/">
+  <link rel="alternate" hreflang="en" href="https://elfberf.github.io/?lang=en">
+  <link rel="alternate" hreflang="tr" href="https://elfberf.github.io/?lang=tr">
+  <link rel="alternate" hreflang="x-default" href="https://elfberf.github.io/">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Elif Berfin Gülbaş — Software Engineer">
   <meta property="og:description" content="Backend & enterprise systems: Java, Spring Boot, REST APIs, relational databases.">
   <meta property="og:url" content="https://elfberf.github.io/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://elfberf.github.io/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Elif Berfin Gülbaş — Software Engineer, Backend & Enterprise Systems">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>
+    // Apply saved theme before first paint to avoid a flash. Storage can be unavailable.
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+      document.documentElement.classList.add("js");
+    })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,128 +48,225 @@
     "name": "Elif Berfin Gülbaş",
     "jobTitle": "Software Engineer",
     "url": "https://elfberf.github.io/",
+    "email": "mailto:berfingulbas@gmail.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Ankara", "addressCountry": "TR" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Gazi University" },
     "knowsAbout": ["Java", "Spring Boot", "REST APIs", "PostgreSQL", "Oracle", "Docker", "CI/CD"],
+    "knowsLanguage": ["tr", "en", "de"],
     "sameAs": ["https://github.com/elfberf", "https://www.linkedin.com/in/berfingulbas/"]
   }
   </script>
   <script type="module" src="assets/js/main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Icon sprite: each symbol is referenced by its id with an svg use element. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5 9-10"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="M7 9V3h10v6M7 17H4v-8h16v8h-3"/><path d="M7 14h10v7H7z"/></g></symbol>
+    <symbol id="i-contract" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></g></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="wordmark" href="#top" aria-label="Elif Berfin Gülbaş, back to top">EBG</a>
-      <nav aria-label="Primary">
-        <ul class="nav">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#expertise">Expertise</a></li>
-          <li><a href="#contact">Contact</a></li>
+      <a class="brand" href="#top" data-i18n-attr="aria-label:nav.home" aria-label="Elif Berfin Gülbaş, back to top">
+        <span class="brand__mark" aria-hidden="true">EB</span>
+        <span class="brand__name">Elif Berfin Gülbaş</span>
+      </a>
+
+      <nav class="nav" id="site-nav" data-i18n-attr="aria-label:nav.label" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
+
+      <div class="controls">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+          <button type="button" data-lang="tr" aria-pressed="false" lang="tr">TR</button>
+        </div>
+        <button type="button" class="icon-button" data-theme-toggle aria-label="Switch to dark theme">
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <button type="button" class="icon-button menu-button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" data-i18n-attr="aria-label:nav.menu" aria-label="Menu">
+          <svg class="icon icon--open" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero container" id="top" aria-labelledby="hero-title">
-      <p class="eyebrow">Ankara, Türkiye</p>
-      <h1 id="hero-title" class="hero__title">
-        Elif Berfin Gülbaş
-        <span class="hero__role">Software Engineer — Backend &amp; Enterprise Systems</span>
-      </h1>
-      <p class="hero__lede">
-        Backend-focused computer engineer building enterprise banking systems, primarily with
-        Java and Spring Boot. I work on REST APIs, business logic, database and enterprise
-        system integrations — in both greenfield development and legacy modernization.
-      </p>
-      <ul class="hero__tags" aria-label="Core areas">
-        <li>Java · Spring Boot</li>
-        <li>REST APIs</li>
-        <li>PostgreSQL · Oracle · MS SQL</li>
-        <li>Docker · CI/CD</li>
-      </ul>
-      <p class="hero__actions">
-        <a class="button" href="#work">Selected work</a>
-        <a class="button button--quiet" href="mailto:berfingulbas@gmail.com">Get in touch</a>
-      </p>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__backdrop" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="pill reveal"><span class="pill__dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Software Engineer — Backend &amp; Enterprise Systems</span></p>
+          <h1 id="hero-title" class="hero__title reveal">Elif Berfin <em>Gülbaş</em></h1>
+          <p class="hero__lede reveal" data-i18n="hero.lede">Backend-focused computer engineer building enterprise banking systems, primarily with Java and Spring Boot. I work on REST APIs, business logic, and database and enterprise-system integrations — across greenfield development and legacy modernization.</p>
+          <div class="hero__actions reveal">
+            <a class="button button--primary" href="#work">
+              <span data-i18n="hero.ctaWork">View selected work</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg>
+            </a>
+            <a class="button button--ghost" href="mailto:berfingulbas@gmail.com">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+              <span data-i18n="hero.ctaEmail">Email me</span>
+            </a>
+            <span class="hero__social">
+              <a class="icon-button icon-button--outline" href="https://github.com/elfberf" rel="me" aria-label="GitHub">
+                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+              </a>
+              <a class="icon-button icon-button--outline" href="https://www.linkedin.com/in/berfingulbas/" rel="me" aria-label="LinkedIn">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+              </a>
+            </span>
+          </div>
+        </div>
+
+        <aside class="glance reveal" aria-labelledby="glance-title">
+          <h2 class="glance__title" id="glance-title" data-i18n="glance.title">At a glance</h2>
+          <div data-render="glance"></div>
+        </aside>
+      </div>
+
+      <div class="container">
+        <div class="metrics reveal" role="region" data-i18n-attr="aria-label:metrics.label" aria-label="Selected results" data-render="metrics"></div>
+      </div>
     </section>
 
-    <section class="section container" id="work" aria-labelledby="work-title">
-      <header class="section__head">
-        <p class="section__index" aria-hidden="true">01</p>
-        <h2 id="work-title">Selected work</h2>
-        <p class="section__intro">
-          Engineering case studies from professional and academic work. Client systems are
-          described at a general level; no proprietary code or data is shown.
-        </p>
-      </header>
-      <div class="section__body" data-render="caseStudies"></div>
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__index" aria-hidden="true">01</p>
+          <h2 class="section__title" id="work-title" data-i18n="work.title">Selected work</h2>
+          <p class="section__intro" data-i18n="work.intro">Engineering case studies from professional and academic work. Client systems are described at a general level; no proprietary code or data is shown.</p>
+        </header>
+        <div data-render="caseStudies"></div>
+      </div>
     </section>
 
-    <section class="section container" id="experience" aria-labelledby="experience-title">
-      <header class="section__head">
-        <p class="section__index" aria-hidden="true">02</p>
-        <h2 id="experience-title">Experience</h2>
-      </header>
-      <div class="section__body" data-render="experience"></div>
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__index" aria-hidden="true">02</p>
+          <h2 class="section__title" id="experience-title" data-i18n="experience.title">Experience</h2>
+        </header>
+        <div data-render="experience"></div>
+      </div>
     </section>
 
-    <section class="section container" id="expertise" aria-labelledby="expertise-title">
-      <header class="section__head">
-        <p class="section__index" aria-hidden="true">03</p>
-        <h2 id="expertise-title">Technical expertise</h2>
-        <p class="section__intro">Items marked <span class="tag tag--fundamentals">fundamentals</span> are working knowledge rather than production depth.</p>
-      </header>
-      <div class="section__body">
+    <section class="section" id="expertise" aria-labelledby="expertise-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__index" aria-hidden="true">03</p>
+          <h2 class="section__title" id="expertise-title" data-i18n="expertise.title">Technical expertise</h2>
+          <p class="section__intro">
+            <span data-i18n="expertise.introBefore">Items marked</span>
+            <span class="tag tag--fundamentals" data-i18n="fundamentals">fundamentals</span>
+            <span data-i18n="expertise.introAfter">are working knowledge rather than production depth.</span>
+          </p>
+        </header>
         <div data-render="skills"></div>
+
+        <h3 class="subhead reveal" data-i18n="principles.title">How I work</h3>
+        <div data-render="principles"></div>
+
         <div class="split">
-          <div>
-            <h3 class="subhead">Education, certification &amp; volunteering</h3>
+          <div class="reveal">
+            <h3 class="subhead" data-i18n="education.title">Education, certification &amp; volunteering</h3>
             <div data-render="education"></div>
           </div>
-          <div>
-            <h3 class="subhead">Languages</h3>
+          <div class="reveal">
+            <h3 class="subhead" data-i18n="languages.title">Languages</h3>
             <div data-render="languages"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section container" id="contact" aria-labelledby="contact-title">
-      <header class="section__head">
-        <p class="section__index" aria-hidden="true">04</p>
-        <h2 id="contact-title">Contact</h2>
-      </header>
-      <div class="section__body">
-        <p class="contact__lede">Open to conversations about backend and enterprise engineering roles.</p>
-        <ul class="contact-list">
-          <li><span class="contact-list__label">Email</span><a href="mailto:berfingulbas@gmail.com">berfingulbas@gmail.com</a></li>
-          <li><span class="contact-list__label">GitHub</span><a href="https://github.com/elfberf" rel="me">github.com/elfberf</a></li>
-          <li><span class="contact-list__label">LinkedIn</span><a href="https://www.linkedin.com/in/berfingulbas/" rel="me">linkedin.com/in/berfingulbas</a></li>
-        </ul>
-        <p class="hero__actions">
-          <a class="button" href="mailto:berfingulbas@gmail.com">Send an email</a>
-          <a class="button button--quiet" href="https://www.linkedin.com/in/berfingulbas/">Connect on LinkedIn</a>
-        </p>
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact reveal">
+          <p class="section__index" aria-hidden="true">04</p>
+          <h2 class="contact__title" id="contact-title" data-i18n="contact.title">Get in touch</h2>
+          <p class="contact__lede" data-i18n="contact.lede">The quickest way to reach me is email. I'm also on GitHub and LinkedIn.</p>
+
+          <div class="contact__email">
+            <a class="contact__address" href="mailto:berfingulbas@gmail.com">berfingulbas@gmail.com</a>
+            <button type="button" class="button button--ghost button--small" data-copy="berfingulbas@gmail.com" data-i18n-attr="aria-label:contact.copyLabel" aria-label="Copy email address">
+              <svg class="icon icon--copy" aria-hidden="true"><use href="#i-copy"/></svg>
+              <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"/></svg>
+              <span data-copy-label data-i18n="contact.copy">Copy</span>
+            </button>
+          </div>
+
+          <ul class="contact__links">
+            <li>
+              <a class="link-card" href="https://github.com/elfberf" rel="me">
+                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                <span><strong>GitHub</strong><span class="link-card__meta">github.com/elfberf</span></span>
+                <svg class="icon link-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="link-card" href="https://www.linkedin.com/in/berfingulbas/" rel="me">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                <span><strong>LinkedIn</strong><span class="link-card__meta">linkedin.com/in/berfingulbas</span></span>
+                <svg class="icon link-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </li>
+            <li>
+              <button type="button" class="link-card" data-print>
+                <svg class="icon" aria-hidden="true"><use href="#i-print"/></svg>
+                <span><strong data-i18n="contact.print">Save as PDF</strong><span class="link-card__meta" data-i18n="contact.printMeta">Print-ready résumé of this page</span></span>
+                <svg class="icon link-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </li>
+          </ul>
+          <p class="print-only print-contact">berfingulbas@gmail.com · github.com/elfberf · linkedin.com/in/berfingulbas · Ankara, Türkiye</p>
+        </div>
       </div>
     </section>
 
     <noscript>
       <p class="container noscript">
-        Case studies, experience and skills are rendered with JavaScript. The full CV is
-        available on <a href="https://www.linkedin.com/in/berfingulbas/">LinkedIn</a>.
+        Case studies, experience and skills need JavaScript. The full CV is available on
+        <a href="https://www.linkedin.com/in/berfingulbas/">LinkedIn</a>.
       </p>
     </noscript>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer__inner">
-      <p>© <span data-year>2026</span> Elif Berfin Gülbaş</p>
-      <p><a href="#top">Back to top</a></p>
+      <p>© <span data-year>2026</span> Elif Berfin Gülbaş · <span data-i18n="footer.built">Built with plain HTML, CSS and JavaScript.</span></p>
+      <p><a href="#top" data-i18n="footer.top">Back to top</a></p>
     </div>
   </footer>
+
+  <a class="to-top icon-button icon-button--solid" href="#top" data-to-top data-i18n-attr="aria-label:footer.top" aria-label="Back to top">
+    <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+  </a>
+  <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
 </body>
 </html>
