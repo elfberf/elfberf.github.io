@@ -3,14 +3,14 @@
  * language, translates static [data-i18n] text, and wires up the interface,
  * the command menu and the message assistant.
  */
-import * as content from "./data.js?v=20261021-1510";
-import { strings, DEFAULT_LANGUAGE } from "./i18n.js?v=20261021-1510";
-import { renderers } from "./render.js?v=20261021-1510";
-import * as ui from "./ui.js?v=20261021-1510";
-import { OWNER, copyText, downloadVCard, notify, sharePage, startClock } from "./actions.js?v=20261021-1510";
-import { createAssistant } from "./assistant.js?v=20261021-1510";
-import { createPalette } from "./palette.js?v=20261021-1510";
-import { offerIntro, playIntro } from "./intro.js?v=20261021-1510";
+import * as content from "./data.js?v=20261021-1513";
+import { strings, DEFAULT_LANGUAGE } from "./i18n.js?v=20261021-1513";
+import { renderers } from "./render.js?v=20261021-1513";
+import * as ui from "./ui.js?v=20261021-1513";
+import { OWNER, copyText, downloadVCard, notify, sharePage, startClock } from "./actions.js?v=20261021-1513";
+import { createAssistant } from "./assistant.js?v=20261021-1513";
+import { createPalette } from "./palette.js?v=20261021-1513";
+import { offerIntro, playIntro } from "./intro.js?v=20261021-1513";
 
 const root = document.documentElement;
 let lang = ui.initialLanguage();

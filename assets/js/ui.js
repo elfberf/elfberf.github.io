@@ -3,8 +3,8 @@
  * copy-to-clipboard, print, reading progress, reveal-on-scroll and count-up.
  * Every enhancement is optional — the page is fully readable without it.
  */
-import { LANGUAGES, DEFAULT_LANGUAGE } from "./i18n.js?v=20261021-1510";
-import { copyText, notify } from "./actions.js?v=20261021-1510";
+import { LANGUAGES, DEFAULT_LANGUAGE } from "./i18n.js?v=20261021-1513";
+import { copyText, notify } from "./actions.js?v=20261021-1513";
 
 const root = document.documentElement;
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
