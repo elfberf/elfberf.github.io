@@ -7,7 +7,7 @@
  * Verifies content shape, local link integrity, GitHub Pages subpath
  * safety and a few privacy rules. Exits non-zero on any failure.
  */
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -162,6 +162,20 @@ checkLocalRefs("404.html", read("404.html"));
 
 for (const [, url] of index.matchAll(/href="(https?:[^"]+)"/g)) {
   if (url.startsWith("http:")) fail(`index.html: insecure link ${url}`);
+}
+
+// ---- Cache-busting stamps (see scripts/bump-version.mjs) ----------------------
+{
+  const versions = new Set();
+  const files = ["index.html", "404.html", ...readdirSync(join(root, "assets/js")).map((f) => `assets/js/${f}`)];
+  for (const file of files) {
+    const text = read(file);
+    for (const [, ref, v] of text.matchAll(/((?:src|href)="(?!https?:|\/\/)[^"]+?\.(?:css|js)|from "\.\/[^"]+?\.js)(?:\?v=([\w.-]+))?"/g)) {
+      if (!v) fail(`${file}: ${ref.replace(/^\w+="|^from "/, "")} has no ?v= stamp — run node scripts/bump-version.mjs`);
+      else versions.add(v);
+    }
+  }
+  if (versions.size > 1) fail(`Inconsistent ?v= stamps (${[...versions].join(", ")}) — run node scripts/bump-version.mjs`);
 }
 
 // ---- Privacy -----------------------------------------------------------------

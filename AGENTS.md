@@ -120,8 +120,12 @@ the field in every `{ en, tr }` value, and a button in `.lang-switch`.
 Run before every commit:
 
 ```bash
+node scripts/bump-version.mjs   # after any CSS/JS change: new ?v= stamp on every asset link
 node scripts/check.mjs
 ```
+
+GitHub Pages lets browsers cache CSS/JS for 10 minutes. Without a new `?v=` stamp,
+visitors can get fresh HTML with stale CSS/JS and a broken layout.
 
 Then manually verify in a browser (`python3 -m http.server` from the repo root):
 

@@ -24,6 +24,7 @@ work because the page uses ES modules.)
 ## Check
 
 ```bash
+node scripts/bump-version.mjs   # after changing CSS/JS: refresh the ?v= cache-busting stamps
 node scripts/check.mjs
 ```
 
