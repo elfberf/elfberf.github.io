@@ -10,14 +10,26 @@
        to the site root. Update "/" if the site moves to a project subpath. -->
   <base href="/">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
 </head>
 <body>
-  <main id="main" class="hero container">
-    <p class="eyebrow">404</p>
-    <h1 class="hero__title">Page not found</h1>
-    <p class="hero__lede">The page you were looking for doesn’t exist.</p>
-    <p class="hero__actions"><a class="button" href="./">Back to the portfolio</a></p>
+  <main id="main" class="hero">
+    <div class="hero__backdrop" aria-hidden="true"></div>
+    <div class="container hero__copy">
+      <p class="pill"><span class="pill__dot" aria-hidden="true"></span>404</p>
+      <h1 class="hero__title">Page not <em>found</em></h1>
+      <p class="hero__lede">The page you were looking for doesn’t exist. · Aradığınız sayfa bulunamadı.</p>
+      <p class="hero__actions"><a class="button button--primary" href="./">Back to the portfolio · Ana sayfa</a></p>
+    </div>
   </main>
 </body>
 </html>

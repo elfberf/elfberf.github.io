@@ -1,13 +1,17 @@
 # Content sources
 
 Every published statement maps to a section of the owner's CV (Turkish edition,
-held privately — never commit it). Translations are faithful; numbers and
-qualifiers are kept exactly.
+held privately — never commit it). Turkish text follows the CV wording; English is
+a faithful translation. Numbers and qualifiers are kept exactly in both languages.
 
 | Site location | Statement | CV section |
 | --- | --- | --- |
 | Hero | Backend-focused computer engineer, enterprise banking, Java & Spring Boot, REST APIs, integrations, greenfield + legacy modernization | Profesyonel Profil |
 | Hero | Ankara, Türkiye | Header |
+| At a glance | Focus, core stack, databases, delivery tools, education, location | Profesyonel Profil, Beceriler, Eğitim, Header |
+| Selected results | ~70%, Java 8 → 21, ~2× at ~97%, 92.3% | Same CV bullets as the matching case studies below |
+| Case study flows | Before → after steps (SOAP → REST, Java 8 → 21, manual → end-to-end, BraTS → CNN → 92.3%) | Same CV bullets as each case study |
+| How I work | API contracts with analysts/seniors/frontend; code review, SonarQube, API testing, debugging & maintainable code; consistency checks & Liquibase; Java 8 → 21 and SOAP → REST modernization | Beceriler (Architecture & Practices), İş Deneyimi — Key Yazılım bullets 2, 3, 7, 9 |
 | Case study `soap-to-rest` | Legacy SOAP rebuilt as REST; ~70% response-time efficiency for critical queries | İş Deneyimi — Key Yazılım, bullet 3 |
 | Case study `java-21-migration` | Core modules migrated Java 8 → 21; performance and maintainability improved | İş Deneyimi — Key Yazılım, bullet 2 |
 | Case study `file-processing-pipeline` | C#/Docker/SQL redesign; ~2× daily records; ~97% accuracy; no corruption detected; container registries | İş Deneyimi — STB, bullets 1–3 |
