@@ -170,6 +170,12 @@ export const education = [
     period: "2022",
     detail: "Course certificate.",
   },
+  {
+    title: "Communications Officer",
+    place: "Erasmus Student Network, Gazi University",
+    period: "Ongoing",
+    detail: "Volunteer role.",
+  },
 ];
 
 export const languages = [

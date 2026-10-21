@@ -19,8 +19,8 @@ qualifiers are kept exactly.
 | Expertise | All skill groups; "fundamentals" flags for Kafka, Kubernetes, AWS/S3, TDD | Beceriler |
 | Education | BSc Computer Engineering, Gazi University, 2018–2024, core courses | Eğitim |
 | Certification | Cloud Computing Security, Siber Kulüpler Birliği, 2022 | Kurslar ve Sertifikalar |
+| Volunteering | Communications Officer, Erasmus Student Network Club in Gazi University (ongoing) | Ders Dışı Etkinlikler |
 | Languages | Turkish native, English C1, German B1 | Diller |
 | Contact | Email, GitHub `elfberf`, LinkedIn `berfingulbas` | Header links |
 
-Deliberately **not** published: phone number, references, extracurricular
-roles (can be added on request).
+Deliberately **not** published: phone number, references.
