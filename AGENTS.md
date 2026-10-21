@@ -79,8 +79,9 @@ Rules:
 - Render with `el()` / text nodes only. **Never use `innerHTML`** with content.
 - Enhancements are optional: content must be readable with JavaScript failing
   after load. Reveal-on-scroll has a CSS fallback and is off for
-  `prefers-reduced-motion`. No decorative animation beyond fades, count-up and
-  hover states.
+  `prefers-reduced-motion`. Decorative motion is limited to fades, count-up,
+  hover states and the hero light intro (`intro.js`, every load, skipped with
+  reduced motion).
 - **Paths in `index.html` are relative** (`assets/...`, never `/assets/...`) so the
   site works both at `https://<user>.github.io/` and at a project subpath.
   `404.html` is the one exception: it uses `<base href="/">` because GitHub
