@@ -2,7 +2,7 @@
  * Command menu (⌘K / Ctrl+K): a searchable list of every action on the page.
  * Accessible combobox + listbox pattern; arrow keys move, Enter runs, Escape closes.
  */
-import { el, icon } from "./render.js";
+import { el, icon } from "./render.js?v=20261021-1510";
 
 const normalize = (s) =>
   s
